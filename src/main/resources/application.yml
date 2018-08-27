@@ -5,8 +5,10 @@ spring:
         name: zuul-service
 eureka:
     instance:
-        preferIpAddress: 'true'
+        hostname: localhost
+        preferIpAddress: 'false'
     client:
+        enabled: 'true'
         registerWithEureka: 'true'
         fetchRegistry: 'true'
     serviceurl:
@@ -17,7 +19,22 @@ management:
 zuul:
     routes:
         content:
-            url: 'http://localhost:65485/content'
+            path: /content/**
+            serviceId: content
+            #url: 'http://localhost:65485/content'
+            stripPrefix: false
 logging:
     file: zuul.log
     level: FINEST
+ribbon:
+    eureka:
+        enabled: true
+    ConnectTimeout: 30000
+    ReadTimeout: 60000
+hystrix: 
+ command: 
+   default: 
+     execution: 
+       isolation: 
+         thread: 
+           timeoutInMilliseconds: 40000000
