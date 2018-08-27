@@ -23,6 +23,21 @@ zuul:
             serviceId: content
             #url: 'http://localhost:65485/content'
             stripPrefix: false
+        checkout:
+            path: /checkout/**
+            serviceId: checkout
+            #url: 'http://localhost:65485/checkout'
+            stripPrefix: false
+        inventory:
+            path: /inventory/**
+            serviceId: inventory
+            #url: 'http://localhost:65485/inventory'
+            stripPrefix: false
+        payment:
+            path: /payment/**
+            serviceId: payment
+            #url: 'http://localhost:65485/payment'
+            stripPrefix: false
 logging:
     file: zuul.log
     level: FINEST
